@@ -1,5 +1,8 @@
-
 #!/usr/bin/env python
+import os
+import http.server
+import urllib.parse
+import urllib.request
 import html, http.client, http.server, io, json, os, pickle, random, re, socket, socketserver, sqlite3, string, sys, subprocess, time, traceback, urllib.parse, urllib.request, xml.etree.ElementTree  # Python 3 required
 try:
     import lxml.etree
@@ -90,7 +93,39 @@ class ThreadingServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         http.server.HTTPServer.server_bind(self)
 
+class VulnerableHandler(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        path, query = self.path.split('?', 1) if '?' in self.path else (self.path, "")
+        params = dict(pair.split('=', 1) for pair in query.split('&') if '=' in pair)
+ 
+        if path == '/':
+ 
+            # --- VARIANT 1: Source = HTTP param (original, CWE-94) ---
+            if "include" in params:
+                url = urllib.parse.unquote(params["include"])
+                program = (
+                    open(url, "rb") if "://" not in url
+                    else urllib.request.urlopen(url)
+                ).read()
+                exec(program)  # SINK: exec() with user-controlled source
+ 
+            # --- VARIANT 2: Source = Environment variable (CWE-454) ---
+            elif "run_env" in params:
+                script = os.environ.get("EXEC_SCRIPT", "")
+                exec(script)  # SINK: exec() with env variable source
+ 
+            # --- VARIANT 3: Source = Hardcoded (no vulnerability) ---
+            elif "run_safe" in params:
+                script = "print('hello, world')"  # trusted, hardcoded
+                exec(script)  # No vulnerability - source is trusted
+ 
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
 if __name__ == "__main__":
+    print("[!] This server is intentionally vulnerable - for SAST testing only")
+    http.server.HTTPServer(("127.0.0.1", 8888), VulnerableHandler).serve_forever()
     init()
     print("%s #v%s\n by: %s\n\n[i] running HTTP server at 'http://%s:%d'..." % (NAME, VERSION, AUTHOR, LISTEN_ADDRESS, LISTEN_PORT))
     try:
