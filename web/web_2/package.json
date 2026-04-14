@@ -1,0 +1,14 @@
+{
+  "name": "SupplyChainSecurity",
+  "private": false,
+  "version": "1.0.1",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "lodash": "4.17.11",
+  },
+  "scripts": {},
+  "devDependencies": {
+    "js-yaml": "3.6.1"
+  }
+}
