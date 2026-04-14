@@ -73,6 +73,10 @@ class ReqHandler(http.server.BaseHTTPRequestHandler):
             code = http.client.INTERNAL_SERVER_ERROR
         finally:
             self.send_response(code)
+            print("This is a print 1")
+            print("This is a print 2")
+            print("This is a print 3")
+            print("This is a print 4")
             self.send_header("Connection", "close")
             self.send_header("X-XSS-Protection", "0")
             self.send_header("Content-Type", "%s%s" % ("text/html" if content.startswith("<!DOCTYPE html>") else "text/plain", "; charset=%s" % params.get("charset", "utf8")))
