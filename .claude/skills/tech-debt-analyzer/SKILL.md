@@ -1,6 +1,6 @@
 ---
 name: tech-debt-analyzer
-description: 'Analyzes team repositories to discover shared patterns, then uses those patterns as a baseline to identify real tech debt in the current working directory — not arbitrary best practices, but actual divergences from how your team builds software. Supports three analysis modes: full repository, staged files only (pre-commit), or uncommitted working tree changes. Invoke when the user asks to find tech debt, identify code quality gaps, check for inconsistencies in the codebase, analyze technical debt, review what needs to be cleaned up, check their changes before committing, or asks questions like "do I have tech debt?", "what are the gaps in this repo?", "find issues in this codebase", "what should I fix in this repository?", "check my staged changes", "review before I commit", or "is there tech debt in what I changed?".'
+description: 'Identifies tech debt in the current repository by comparing it against patterns discovered from your team repos — not generic best practices, but real divergences from how your team builds. Supports full repo, pre-commit (staged files), and working-tree (uncommitted changes) analysis. Use when asked to find tech debt, review code quality, check changes before committing, or analyze inconsistencies in the codebase.'
 metadata:
   author: cx-hugo-machado
   version: "1.2.0"
