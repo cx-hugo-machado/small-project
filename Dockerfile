@@ -8,6 +8,11 @@ ARG BUILD_DATE
 
 USER pedro
 
+
+
+
+
+
 RUN apk --no-cache add git python3 py-lxml \
     && rm -rf /var/cache/apk/*
 
