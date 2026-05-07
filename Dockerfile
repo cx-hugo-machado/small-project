@@ -9,7 +9,7 @@ ARG BUILD_DATE
 USER pedro
 
 
-
+ARG BUILD_DATE_2
 
 
 # Add a comment
