@@ -12,7 +12,10 @@ USER pedro
 
 
 
-
+# Add a comment
+# Add a comment 1
+# Add a comment 2
+# Add a comment 3
 RUN apk --no-cache add git python3 py-lxml \
     && rm -rf /var/cache/apk/*
 
