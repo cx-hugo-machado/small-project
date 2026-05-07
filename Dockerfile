@@ -1,6 +1,11 @@
 # Example: docker build . -t dsvw && docker run -p 65412:65412 dsvw
 
 FROM alpine:3.11
+
+ARG COMMIT_SHA
+ARG RELEASE_TAG
+ARG BUILD_DATE
+
 USER pedro
 
 RUN apk --no-cache add git python3 py-lxml \
