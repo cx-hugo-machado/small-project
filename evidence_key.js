@@ -1,5 +1,6 @@
 import OpenAI from "openai";
 
+
 const model = "gpt-4";
 const client = new OpenAI();
 
