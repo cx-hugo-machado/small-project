@@ -8,6 +8,7 @@ const client = new OpenAI();
 
 function summarize(text) {
     const model = "gpt-4";
+    // Comment added
     return client.responses.create({model, input: text});
 }
 
