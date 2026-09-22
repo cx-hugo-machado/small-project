@@ -7,7 +7,9 @@ const model = "gpt-4"; // This is an inline comment - updated
 // comment added here
 // another comment
 const client = new OpenAI();
-
+// comment added here
+// another comment
+// comment 3
 function summarize(text) {
     const model = "gpt-4";
     // Comment added
