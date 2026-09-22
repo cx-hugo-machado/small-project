@@ -18,3 +18,13 @@ function summarize(text) {
 function classify(text) {
     return client.responses.create({model: "gpt-4", input: text});
 }
+
+setTimeout(function () {
+    const model = "gpt-4";   // line 7
+    console.log(model);
+}, 1000);
+
+setInterval(function () {
+    const model = "gpt-4";   // line 12
+    console.log(model);
+}, 5000);
