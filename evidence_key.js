@@ -25,6 +25,10 @@ setTimeout(function () {
 }, 1000);
 
 setInterval(function () {
+    let aaa = "bbb";
+    // this is another comment
+
+    
     const model = "gpt-4";   // line 12
     console.log(model);
 }, 5000);
