@@ -24,10 +24,11 @@ setTimeout(function () {
     console.log(model);
 }, 1000);
 
-setInterval(function () {
+setInterval(function (param1) {
     let aaa = "bbb";
     // this is another comment
 
+    console.log(param1);
     
     const model = "gpt-4";   // line 12
     console.log(model);
