@@ -3,7 +3,7 @@ import OpenAI from "openai";
 
 
 
-const model = "gpt-4"; // This is an inline comment - updated
+    const model = "gpt-4"; // This is an inline comment - updated 2
 // comment added here
 // another comment
 const client = new OpenAI();
