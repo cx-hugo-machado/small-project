@@ -8,7 +8,7 @@ const client = new OpenAI(); // comment
 // another comment
 
 // comment added here
-function summarize(text, param2) {
+function summarize_2(text, param2) {
     // comment inside
     console.log(param2);
     const model = "gpt-4";
